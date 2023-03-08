@@ -4,6 +4,7 @@ import os
 def add_articles():
     dir = 'articles'
     files = os.listdir(dir)
+    files.sort()
 
     with open("README.adoc", "a") as f:
         for file in files:

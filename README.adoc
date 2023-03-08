@@ -1,0 +1,8 @@
+= Blog
+
+Ce repository contient mon blog. 
+
+Les pages sont écrites en Asciidoc et sont publiées via l'acion https://github.com/manoelcampos/asciidoctor-ghpages-action[asciidoctor-ghpages].
+
+Les articles sont automatiquement ajoutés au fichier README.adoc.
+Les noms des fichiers des articles commencent par la date d'ajout pour permettre de les afficher dans l'ordre.
