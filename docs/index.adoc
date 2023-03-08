@@ -1,3 +1,3 @@
 = Mon blog
 
-include::articles/premier_article.adoc[]
+include::articles/premier_article.adoc[leveloffset=+1]
