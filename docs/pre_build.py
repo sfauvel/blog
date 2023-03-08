@@ -9,7 +9,7 @@ def add_articles():
     with open("README.adoc", "a") as f:
         for file in files:
 
-            f.write(f'include::{dir}/{file}[leveloffset=+1]\n')
+            f.write(f'include::{dir}/{file}[leveloffset=+2]\n')
 
         
 if __name__ == "__main__":
