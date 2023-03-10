@@ -8,12 +8,13 @@
 div.sectionbody {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-between;
 }
 
 div.sectionbody > div {
     margin: 10px;
-    padding: 5px;
+    padding: 10px;
     background-color: aqua;
-    width: calc(50% - 20px);
+    width: calc(100% - 20px);
 }

@@ -1,0 +1,49 @@
+
+= Création du blog
+
+
+== Principe
+
+Je me suis décidé à démarrer mon blog et pour cela, je cherche à utiliser des choses simples.
+J'ai donc décidé de partir sur un simple repository link:https://github.com/[Github] avec des fichiers textes au format link:https://asciidoctor.org/[asciidoc].
+
+== Fonctionnement
+
+La publication est assuré par l'action link:https://github.com/manoelcampos/asciidoctor-ghpages-action[asciidoctor-ghpages-action] qui construit une branche contenant les fichiers `HTML` générés à partir des fichiers `ADOC`. 
+La branche sert de source pour les link:https://pages.github.com/[Github pages].
+
+A chaque commit sur la branche `main`, le site est republié.
+
+La création d'un article revient à créer un fichier dans le répertoire `articles`.
+
+Avant de générer les fichiers `HTML`, un script se charge de construire la liste des articles.
+Il s'agit d'un script Python, qui liste les fichiers et construit la page principale pour y ajouter les liens ou les inclusions.
+
+Une feuille css se charge de la mise en forme.
+
+[yaml]
+.Action github pour publier le site
+----
+name: GitHub Pages Publish
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      
+    # Includes the AsciiDoctor GitHub Pages Action to convert adoc files to html and publish to gh-pages branch
+    - name: asciidoctor-ghpages
+      uses: manoelcampos/asciidoctor-ghpages-action@v2
+      with:
+        pdf_build: true
+        asciidoctor_params: --attribute=nofooter
+        source_dir: docs/ 
+        pre_build: python pre_build.py
+        
+----
